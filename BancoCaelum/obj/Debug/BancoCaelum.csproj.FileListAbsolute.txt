@@ -1,0 +1,10 @@
+F:\Projeto\BancoCaelum\BancoCaelum\bin\Debug\BancoCaelum.exe.config
+F:\Projeto\BancoCaelum\BancoCaelum\bin\Debug\BancoCaelum.exe
+F:\Projeto\BancoCaelum\BancoCaelum\bin\Debug\BancoCaelum.pdb
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.csprojAssemblyReference.cache
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.Form1.resources
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.Properties.Resources.resources
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.csproj.GenerateResource.cache
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.csproj.CoreCompileInputs.cache
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.exe
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.pdb
