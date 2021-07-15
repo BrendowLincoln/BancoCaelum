@@ -8,3 +8,4 @@ F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.csproj.GenerateResource
 F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.csproj.CoreCompileInputs.cache
 F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.exe
 F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.pdb
+F:\Projeto\BancoCaelum\BancoCaelum\obj\Debug\BancoCaelum.FormContaCadastro.resources

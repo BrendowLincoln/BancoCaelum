@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace BancoCaelum
 {
-    class Conta
+    public class Conta
     {
         public int Numero { get; set; }
         public Cliente Titular { get; set; }
         public double Saldo { get; private set;  }
+        public string Tipo { get; set; }
 
 
         public Conta()
@@ -18,7 +19,12 @@ namespace BancoCaelum
             Saldo = 100.0;
         }
 
-        public bool Sacar(double valor)
+        public Conta(int numero)
+        {
+            this.Numero = numero;
+        }
+
+        public virtual bool Sacar(double valor)
         {
 
             if (valor != 0 && valor <= this.Saldo)
@@ -67,6 +73,8 @@ namespace BancoCaelum
 
 
         }
+
+        
 
 
     }

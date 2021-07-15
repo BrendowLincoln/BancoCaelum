@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Globalization;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BancoCaelum
@@ -18,26 +11,42 @@ namespace BancoCaelum
     {
 
 
-        Conta conta = new Conta();
+        private List<Conta> contas;
+        private int numeroDeContas = 0;
+
+
+     
 
         public Form1()
         {
             InitializeComponent();
         }
 
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            this.contas = new List<Conta>();
 
-            conta.Numero = 1;
-            Cliente cliente = new Cliente("Brendow Lincoln");
-            conta.Titular = cliente;
-            textoTitular.Text = conta.Titular.Nome;
-            textoNumero.Text = Convert.ToString(conta.Numero);
-            textoSaldo.Text = Convert.ToString(conta.Saldo.ToString("C"));
+            this.contas[0] = new Conta();
+            this.contas[0].Titular = new Cliente("Brendow Lincoln");
+            this.contas[0].Numero = 1;
+            this.AdicionaConta(this.contas[0]);
+
+            this.contas[1] = new ContaPoupanca();
+            this.contas[1].Titular = new Cliente("Bryan Lincoln");
+            this.contas[1].Numero = 2;
+            this.AdicionaConta(this.contas[1]);
+
+            this.contas[2] = new ContaCorrente();
+            this.contas[2].Titular = new Cliente("Juliana Ribeiro");
+            this.contas[2].Numero = 2;
+            this.AdicionaConta(this.contas[2]);
 
         }
 
+       
         private void textoTitular_TextChanged(object sender, EventArgs e)
         {
 
@@ -57,11 +66,16 @@ namespace BancoCaelum
 
         private void botaoSaca_Click(object sender, EventArgs e)
         {
+
+
+            int indice = comboContas.SelectedIndex;
+            Conta selecionada = this.contas[indice];
+
             double valorSaque = String.IsNullOrEmpty(textoValorOperacao.Text) ? 0 : Convert.ToDouble(textoValorOperacao.Text) ;
-            if(conta.Sacar(valorSaque))
+            if(selecionada.Sacar(valorSaque))
             {
-                MessageBox.Show($"O seu saldo atual é de {conta.Saldo.ToString("C")}");
-                textoSaldo.Text = Convert.ToString(conta.Saldo.ToString("C"));
+                MessageBox.Show($"Ola, { selecionada.Titular.Nome }! O seu saldo atual é de {selecionada.Saldo.ToString("C")}");
+                textoSaldo.Text = Convert.ToString(selecionada.Saldo.ToString("C"));
             }
             else
             {
@@ -75,11 +89,16 @@ namespace BancoCaelum
 
         private void botaoDeposito_Click(object sender, EventArgs e)
         {
+
+            int indice = comboContas.SelectedIndex;
+            Conta selecionada = this.contas[indice];
+
+
             double valorDeposito = String.IsNullOrEmpty(textoValorOperacao.Text) ? 0 : Convert.ToDouble(textoValorOperacao.Text);
-            if (conta.Depositar(valorDeposito))
+            if (selecionada.Depositar(valorDeposito))
             {
-                MessageBox.Show($"O seu saldo atual é de {conta.Saldo.ToString("C")}");
-                textoSaldo.Text = Convert.ToString(conta.Saldo.ToString("C"));
+                MessageBox.Show($"Ola, { selecionada.Titular.Nome }! O seu saldo atual é de {selecionada.Saldo.ToString("C")}");
+                textoSaldo.Text = Convert.ToString(selecionada.Saldo.ToString("C"));
 
             }
             else
@@ -109,133 +128,41 @@ namespace BancoCaelum
 
         }
 
+        private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int indice = comboContas.SelectedIndex;
+            Conta contaSelecionada = this.contas[indice];
+            textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
+            textoTitular.Text = contaSelecionada.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
+
+        }
 
 
-        /* private void button1_Click(object sender, EventArgs e)
-         {
+        public void AdicionaConta(Conta conta)
+        {
+            this.contas[this.numeroDeContas] = conta;
+            this.numeroDeContas++;
+            comboContas.Items.Add(conta.Titular.Nome);
+        }
 
+        private void botaoNovaConta_Click(object sender, EventArgs e)
+        {
 
-             Cliente user1 = new Cliente();
-             Conta conta = new Conta();
+            FormContaCadastro formCadastro = new FormContaCadastro(this);
+            formCadastro.ShowDialog();
 
+        }
 
-             conta.Numero = 1;
-             conta.Titular = user1;
+        private void label5_Click(object sender, EventArgs e)
+        {
 
-             Cliente user2 = new Cliente();
-             Conta conta2 = new Conta();
+        }
 
-             conta2.Numero = 2;
-             conta2.Titular = user2;
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
-             if (conta.Depositar(54.09))
-             {
-                 MessageBox.Show($"O valor da conta é {conta.Saldo.ToString("C")}");
-             }
-             else
-             {
-                 MessageBox.Show("Saldo insuficiente!");
-             }
-
-         }
-
-         private void button2_Click(object sender, EventArgs e)
-         {
-
-
-             Cliente user1 = new Cliente();
-             Conta conta = new Conta();
-
-
-             conta.Numero = 1;
-             conta.Titular = user1;
-
-             Cliente user2 = new Cliente();
-             Conta conta2 = new Conta();
-
-             conta2.Numero = 2;
-             conta2.Titular = user2;
-
-
-             if (conta.Sacar(53.95))
-             {
-                 MessageBox.Show($"O valor da conta2 é {conta2.Saldo.ToString("C")}");
-             }
-             else
-             {
-                 MessageBox.Show("Saldo insuficiente!");
-             }
-
-         }
-
-         private void button3_Click(object sender, EventArgs e)
-         {
-             Cliente user1 = new Cliente();
-             Conta conta = new Conta();
-
-
-             conta.Numero = 1;
-             conta.Titular = user1;
-
-             Cliente user2 = new Cliente();
-             Conta conta2 = new Conta();
-
-             conta2.Numero = 2;
-             conta2.Titular = user2;
-
-
-             if (conta.Transferir(conta2, 53.95))
-             {
-                 MessageBox.Show($"O valor da conta2 é {conta2.Saldo.ToString("C")}");
-             }
-             else
-             {
-                 MessageBox.Show("Saldo insuficiente!");
-             }
-
-
-         }
-
-         private void button4_Click(object sender, EventArgs e)
-         {
-
-             Cliente user1 = new Cliente("Brendow Lincoln")
-             {
-
-                 Cpf = "17240515710",
-                 Rg = "27966620",
-                 Idade = 21
-
-             };
-             Conta conta = new Conta();
-
-             conta.Numero = 1;
-             conta.Titular = user1;
-
-
-             conta.Titular = user1;
-
-
-             MessageBox.Show($"O nome do titular: {conta.Titular.Nome}");
-
-             MessageBox.Show($"O RG do titular: {conta.Titular.Rg}");
-
-
-             if (conta.Titular.EMaiorDeIdade())
-             {
-                 MessageBox.Show("E maior de idade!");
-             }
-             else
-             {
-                 MessageBox.Show("Nao e maior de idade!");
-
-             }
-
-
-
-         }*/
-
-
-
+        }
     }
 }
