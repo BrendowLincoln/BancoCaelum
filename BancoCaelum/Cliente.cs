@@ -14,11 +14,13 @@ namespace BancoCaelum
         public string Rg { get; set; }
         public string Endereco { get; set; }
         public int Idade { get; set; }
+        public string StatusLegal { get; set; }
 
 
         public Cliente(string nome = "Sem nome")
         {
             this.Nome = nome;
+            this.StatusLegal = "Emancipado";
         }
 
         public bool EMaiorDeIdade()
@@ -31,6 +33,20 @@ namespace BancoCaelum
             }
 
             return false;
+        }
+       
+        public bool PodeAbrirConta
+        {
+            get
+            {
+                var maiorDeIdade = this.Idade >= 18;
+                var emancipado = this.StatusLegal.ToLower().Contains("emancipado");
+                var possuiCpf = !string.IsNullOrEmpty(this.Cpf);
+
+                return (maiorDeIdade || emancipado) && possuiCpf;
+
+            }
+
         }
 
     }

@@ -18,7 +18,8 @@ namespace BancoCaelum
     {
 
 
-        Conta conta = new Conta();
+        private Conta conta;
+        private TotalizadorDeContas totalizador;
 
         public Form1()
         {
@@ -28,7 +29,10 @@ namespace BancoCaelum
         private void Form1_Load(object sender, EventArgs e)
         {
 
-
+            this.conta = new  ContaCorrente();
+            this.totalizador = new TotalizadorDeContas();
+            this.totalizador.Adiciona(this.conta);
+            MessageBox.Show(totalizador.SaldoTotal.ToString());
             conta.Numero = 1;
             Cliente cliente = new Cliente("Brendow Lincoln");
             conta.Titular = cliente;
