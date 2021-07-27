@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BancoCaelum
+namespace BancoCaelum.Banco.Usuarios
 {
     public class Cliente
     {

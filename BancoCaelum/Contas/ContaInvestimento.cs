@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BancoCaelum.Banco.Contas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BancoCaelum
+namespace BancoCaelum.Banco.Contas
 {
     class ContaInvestimento : Conta, ITributavel
     {
