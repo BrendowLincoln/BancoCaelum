@@ -19,6 +19,7 @@ namespace BancoCaelum
         {
             InitializeComponent();
             this.formPrincipal = formPrincipal;
+            this.textoNumeroCadastro.Text = Conta.ProximaConta().ToString();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -31,7 +32,6 @@ namespace BancoCaelum
             Conta novaConta = new ContaCorrente()
             {
 
-                Numero = Convert.ToInt32(textoNumeroCadastro.Text),
                 Titular = new Cliente(textoTitularCadastro.Text)
 
             };
@@ -40,6 +40,11 @@ namespace BancoCaelum
 
             this.Hide();
             MessageBox.Show($"Nova conta cadastrada com sucesso!");
+
+        }
+
+        private void FormContaCadastro_Load(object sender, EventArgs e)
+        {
 
         }
     }

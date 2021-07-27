@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace BancoCaelum
 {
-    public class Conta
+    public abstract class Conta
     {
         public int Numero { get; set; }
         public Cliente Titular { get; set; }
-        public double Saldo { get; private set;  }
+        public double Saldo { get; protected set;  }
         public string Tipo { get; set; }
+
+        private static int numeroDeContas;
 
 
         public Conta()
         {
-            Saldo = 100.0;
+            Conta.numeroDeContas++;
+            this.Numero = Conta.numeroDeContas;
         }
 
         public Conta(int numero)
@@ -24,35 +27,10 @@ namespace BancoCaelum
             this.Numero = numero;
         }
 
-        public virtual bool Sacar(double valor)
-        {
+        public abstract void Sacar(double valor);
 
-            if (valor != 0 && valor <= this.Saldo)
-            {
-
-                Saldo -= valor;
-                return true;
-
-            }
-
-            return false;
-
-
-        }
-
-        public bool Depositar(double valor)
-        {
-
-            if (valor != 0 && valor > 0)
-            {
-
-                Saldo += valor;
-                return true;
-            }
-
-            return false;
-
-        }
+        public abstract void Depositar(double valor);
+       
 
 
         public bool Transferir(Conta favorecido, double valor)
@@ -74,8 +52,11 @@ namespace BancoCaelum
 
         }
 
-        
 
+        public static int ProximaConta()
+        {
+            return numeroDeContas + 1;
+        }
 
     }
 }

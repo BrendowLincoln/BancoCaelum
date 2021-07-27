@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace BancoCaelum
 {
-    class ContaCorrente : Conta
+    public class SeguroDeVida : ITributavel
     {
-        public override bool Sacar(double valor)
+
+        const double Tributo = 42.0;
+
+        public double CalcularTributo()
         {
-
-            return base.Sacar(valor + 0.05);
-
+            return Tributo;
         }
-
-
     }
 }
-  

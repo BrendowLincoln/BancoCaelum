@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace BancoCaelum
 {
-    class ContaPoupanca : Conta, ITributavel
+    class ContaInvestimento : Conta, ITributavel
     {
-
-
-        public ContaPoupanca()
-        {
-
-        }
-
-        public ContaPoupanca(int numero):  base (numero) { }
-
-       
+        
 
         public override bool Depositar(double valor)
         {
@@ -33,27 +24,19 @@ namespace BancoCaelum
 
         public override bool Sacar(double valor)
         {
-
-            if (valor != 0 && (valor + 0.10) <= this.Saldo)
+            if (valor != 0 && valor <= this.Saldo)
             {
 
-                this.Saldo -= (valor + 0.10);
+                this.Saldo -= (valor + 0.05);
                 return true;
 
             }
-            else
-            {
-                throw new Exception("Valor do saque maior que o saldo");
-            }
 
             return false;
-
         }
-
         public double CalcularTributo()
         {
-            return this.Saldo * 0.02;
+            return this.Saldo * 0.03;
         }
-
     }
 }

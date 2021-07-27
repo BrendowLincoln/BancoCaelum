@@ -11,7 +11,7 @@ namespace BancoCaelum
     {
 
 
-        private List<Conta> contas;
+        private Conta[] contas;
         private int numeroDeContas = 0;
 
 
@@ -27,22 +27,8 @@ namespace BancoCaelum
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            this.contas = new List<Conta>();
+            this.contas = new Conta[10];
 
-            this.contas[0] = new Conta();
-            this.contas[0].Titular = new Cliente("Brendow Lincoln");
-            this.contas[0].Numero = 1;
-            this.AdicionaConta(this.contas[0]);
-
-            this.contas[1] = new ContaPoupanca();
-            this.contas[1].Titular = new Cliente("Bryan Lincoln");
-            this.contas[1].Numero = 2;
-            this.AdicionaConta(this.contas[1]);
-
-            this.contas[2] = new ContaCorrente();
-            this.contas[2].Titular = new Cliente("Juliana Ribeiro");
-            this.contas[2].Numero = 2;
-            this.AdicionaConta(this.contas[2]);
 
         }
 
@@ -65,21 +51,22 @@ namespace BancoCaelum
         }
 
         private void botaoSaca_Click(object sender, EventArgs e)
-        {
+        { 
 
 
             int indice = comboContas.SelectedIndex;
             Conta selecionada = this.contas[indice];
 
             double valorSaque = String.IsNullOrEmpty(textoValorOperacao.Text) ? 0 : Convert.ToDouble(textoValorOperacao.Text) ;
-            if(selecionada.Sacar(valorSaque))
+            try
             {
+                selecionada.Sacar(valorSaque);
                 MessageBox.Show($"Ola, { selecionada.Titular.Nome }! O seu saldo atual é de {selecionada.Saldo.ToString("C")}");
                 textoSaldo.Text = Convert.ToString(selecionada.Saldo.ToString("C"));
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Valor inválido!");
+                MessageBox.Show("Saldo insuficiente!");
             }
 
             textoValorOperacao.Clear();
@@ -162,6 +149,25 @@ namespace BancoCaelum
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
+
+        }
+
+        private void botaoImpostos_Click(object sender, EventArgs e)
+        {
+
+            ContaCorrente conta = new ContaCorrente();
+
+            conta.Depositar(200.0);
+            MessageBox.Show($"Imposto da conta corrente = {conta.CalcularTributo()}");
+
+            ITributavel t = conta;
+            MessageBox.Show($"Imposto da conta pela interface = {t.CalcularTributo()}");
+
+            SeguroDeVida sv = new SeguroDeVida();
+            MessageBox.Show($"Imposto do seguro {sv.CalcularTributo()}");
+
+            t = sv;
+            MessageBox.Show($"Imposto do seguro pela interface {sv.CalcularTributo()}");
 
         }
     }
