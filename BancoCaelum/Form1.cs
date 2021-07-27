@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BancoCaelum.Banco.Contas;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace BancoCaelum
     {
 
 
-        private Conta[] contas;
+        private List<Conta> contas;
         private int numeroDeContas = 0;
 
 
@@ -27,7 +28,6 @@ namespace BancoCaelum
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            this.contas = new Conta[10];
 
 
         }
@@ -82,16 +82,9 @@ namespace BancoCaelum
 
 
             double valorDeposito = String.IsNullOrEmpty(textoValorOperacao.Text) ? 0 : Convert.ToDouble(textoValorOperacao.Text);
-            if (selecionada.Depositar(valorDeposito))
-            {
-                MessageBox.Show($"Ola, { selecionada.Titular.Nome }! O seu saldo atual é de {selecionada.Saldo.ToString("C")}");
-                textoSaldo.Text = Convert.ToString(selecionada.Saldo.ToString("C"));
-
-            }
-            else
-            {
-                MessageBox.Show("Valor inválido!");
-            }
+            (selecionada.Depositar(valorDeposito);
+            MessageBox.Show($"Ola, { selecionada.Titular.Nome }! O seu saldo atual é de {selecionada.Saldo.ToString("C")}");
+            textoSaldo.Text = Convert.ToString(selecionada.Saldo.ToString("C"));
             textoValorOperacao.Clear();
         }
 
