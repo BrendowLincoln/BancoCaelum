@@ -19,26 +19,23 @@ namespace BancoCaelum.Banco.Contas
 
        
 
-        public override bool Depositar(double valor)
+        public override void Depositar(double valor)
         {
             if (valor != 0 && valor > 0)
             {
 
                 Saldo += valor;
-                return true;
             }
 
-            return false;
         }
 
-        public override bool Sacar(double valor)
+        public override void Sacar(double valor)
         {
 
             if (valor != 0 && (valor + 0.10) <= this.Saldo)
             {
 
                 this.Saldo -= (valor + 0.10);
-                return true;
 
             }
             else
@@ -46,7 +43,6 @@ namespace BancoCaelum.Banco.Contas
                 throw new Exception("Valor do saque maior que o saldo");
             }
 
-            return false;
 
         }
 

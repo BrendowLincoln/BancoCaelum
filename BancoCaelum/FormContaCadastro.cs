@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BancoCaelum.Banco.Contas;
+using BancoCaelum.Banco.Usuarios;
+using BancoCaelum.Busca;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +16,8 @@ namespace BancoCaelum
     public partial class FormContaCadastro : Form
     {
 
+        private Dictionary<string, Conta> devedores;
+
         private Form1 formPrincipal;
 
         public FormContaCadastro(Form1 formPrincipal)
@@ -20,6 +25,8 @@ namespace BancoCaelum
             InitializeComponent();
             this.formPrincipal = formPrincipal;
             this.textoNumeroCadastro.Text = Conta.ProximaConta().ToString();
+
+            this.devedores = new Dictionary<string, Conta>();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -29,17 +36,29 @@ namespace BancoCaelum
 
         private void botaoCadastro_Click(object sender, EventArgs e)
         {
-            Conta novaConta = new ContaCorrente()
+            string titular = textoTitularCadastro.Text;
+            bool ehDevedor = this.devedores.ContainsKey(titular);
+            Conta novaConta;
+
+            if (!ehDevedor)
             {
+                novaConta = new ContaCorrente()
+                {
 
-                Titular = new Cliente(textoTitularCadastro.Text)
+                    Titular = new Cliente(textoTitularCadastro.Text)
 
-            };
+                };
 
-            this.formPrincipal.AdicionaConta(novaConta);
+                this.formPrincipal.AdicionaConta(novaConta);
 
-            this.Hide();
-            MessageBox.Show($"Nova conta cadastrada com sucesso!");
+                this.Hide();
+                MessageBox.Show($"Nova conta cadastrada com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Voce e devedor.");
+            }
+           
 
         }
 

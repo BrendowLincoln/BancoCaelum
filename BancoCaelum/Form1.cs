@@ -12,7 +12,7 @@ namespace BancoCaelum
     {
 
 
-        private List<Conta> contas;
+        private Dictionary<string, Conta> contas;
         private int numeroDeContas = 0;
 
 
@@ -28,7 +28,9 @@ namespace BancoCaelum
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            this.contas = new Dictionary<string, Conta>();
 
+           
 
         }
 
@@ -54,8 +56,8 @@ namespace BancoCaelum
         { 
 
 
-            int indice = comboContas.SelectedIndex;
-            Conta selecionada = this.contas[indice];
+            string value = comboContas.Text;
+            Conta selecionada = this.contas[value];
 
             double valorSaque = String.IsNullOrEmpty(textoValorOperacao.Text) ? 0 : Convert.ToDouble(textoValorOperacao.Text) ;
             try
@@ -77,12 +79,12 @@ namespace BancoCaelum
         private void botaoDeposito_Click(object sender, EventArgs e)
         {
 
-            int indice = comboContas.SelectedIndex;
-            Conta selecionada = this.contas[indice];
+            string value = comboContas.Text;
+            Conta selecionada = this.contas[value];
 
 
             double valorDeposito = String.IsNullOrEmpty(textoValorOperacao.Text) ? 0 : Convert.ToDouble(textoValorOperacao.Text);
-            (selecionada.Depositar(valorDeposito);
+            selecionada.Depositar(valorDeposito);
             MessageBox.Show($"Ola, { selecionada.Titular.Nome }! O seu saldo atual é de {selecionada.Saldo.ToString("C")}");
             textoSaldo.Text = Convert.ToString(selecionada.Saldo.ToString("C"));
             textoValorOperacao.Clear();
@@ -111,8 +113,8 @@ namespace BancoCaelum
         private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            int indice = comboContas.SelectedIndex;
-            Conta contaSelecionada = this.contas[indice];
+            string value = comboContas.Text;
+            Conta contaSelecionada = this.contas[value];
             textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
             textoTitular.Text = contaSelecionada.Titular.Nome;
             textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
@@ -122,9 +124,9 @@ namespace BancoCaelum
 
         public void AdicionaConta(Conta conta)
         {
-            this.contas[this.numeroDeContas] = conta;
+            this.contas.Add(conta.Titular.Nome, conta);
             this.numeroDeContas++;
-            comboContas.Items.Add(conta.Titular.Nome);
+            comboContas.Items.Add(conta.Titular.Nome);  
         }
 
         private void botaoNovaConta_Click(object sender, EventArgs e)
@@ -161,6 +163,24 @@ namespace BancoCaelum
 
             t = sv;
             MessageBox.Show($"Imposto do seguro pela interface {sv.CalcularTributo()}");
+
+        }
+
+        private void btnBusca_Click(object sender, EventArgs e)
+        {
+            string nomeTitular = textoBuscaTitular.Text;
+
+            Conta conta = contas[nomeTitular];
+
+            textoTitular.Text = conta.Titular.Nome;
+            textoNumero.Text = conta.Numero.ToString();
+            textoSaldo.Text = conta.Saldo.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormRelatorio form = new FormRelatorio(this.contas);
+            form.ShowDialog();
 
         }
     }

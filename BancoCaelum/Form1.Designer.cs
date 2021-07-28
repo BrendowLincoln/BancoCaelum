@@ -42,17 +42,21 @@ namespace BancoCaelum
             this.groupConta = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBusca = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textoBuscaTitular = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboContas = new System.Windows.Forms.ComboBox();
             this.botaoNovaConta = new System.Windows.Forms.Button();
             this.botaoImpostos = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupConta.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textoTitular
             // 
-            this.textoTitular.Location = new System.Drawing.Point(136, 29);
+            this.textoTitular.Location = new System.Drawing.Point(109, 28);
             this.textoTitular.Name = "textoTitular";
             this.textoTitular.Size = new System.Drawing.Size(137, 20);
             this.textoTitular.TabIndex = 0;
@@ -60,7 +64,7 @@ namespace BancoCaelum
             // 
             // textoNumero
             // 
-            this.textoNumero.Location = new System.Drawing.Point(136, 61);
+            this.textoNumero.Location = new System.Drawing.Point(109, 60);
             this.textoNumero.Name = "textoNumero";
             this.textoNumero.Size = new System.Drawing.Size(137, 20);
             this.textoNumero.TabIndex = 1;
@@ -68,7 +72,7 @@ namespace BancoCaelum
             // 
             // textoSaldo
             // 
-            this.textoSaldo.Location = new System.Drawing.Point(136, 89);
+            this.textoSaldo.Location = new System.Drawing.Point(109, 88);
             this.textoSaldo.Name = "textoSaldo";
             this.textoSaldo.Size = new System.Drawing.Size(137, 20);
             this.textoSaldo.TabIndex = 2;
@@ -79,7 +83,7 @@ namespace BancoCaelum
             this.botaoSaca.BackColor = System.Drawing.Color.Maroon;
             this.botaoSaca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botaoSaca.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.botaoSaca.Location = new System.Drawing.Point(216, 153);
+            this.botaoSaca.Location = new System.Drawing.Point(189, 152);
             this.botaoSaca.Margin = new System.Windows.Forms.Padding(2);
             this.botaoSaca.Name = "botaoSaca";
             this.botaoSaca.Size = new System.Drawing.Size(56, 24);
@@ -93,7 +97,7 @@ namespace BancoCaelum
             this.botaoDeposito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.botaoDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botaoDeposito.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.botaoDeposito.Location = new System.Drawing.Point(138, 153);
+            this.botaoDeposito.Location = new System.Drawing.Point(111, 152);
             this.botaoDeposito.Margin = new System.Windows.Forms.Padding(2);
             this.botaoDeposito.Name = "botaoDeposito";
             this.botaoDeposito.Size = new System.Drawing.Size(62, 24);
@@ -105,7 +109,7 @@ namespace BancoCaelum
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 33);
+            this.label1.Location = new System.Drawing.Point(13, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
@@ -116,7 +120,7 @@ namespace BancoCaelum
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 61);
+            this.label2.Location = new System.Drawing.Point(13, 60);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
@@ -126,7 +130,7 @@ namespace BancoCaelum
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 115);
+            this.label3.Location = new System.Drawing.Point(13, 114);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 13);
@@ -137,7 +141,7 @@ namespace BancoCaelum
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 89);
+            this.label4.Location = new System.Drawing.Point(13, 88);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
@@ -147,7 +151,7 @@ namespace BancoCaelum
             // 
             // textoValorOperacao
             // 
-            this.textoValorOperacao.Location = new System.Drawing.Point(136, 113);
+            this.textoValorOperacao.Location = new System.Drawing.Point(109, 112);
             this.textoValorOperacao.Margin = new System.Windows.Forms.Padding(2);
             this.textoValorOperacao.Name = "textoValorOperacao";
             this.textoValorOperacao.Size = new System.Drawing.Size(137, 20);
@@ -170,7 +174,7 @@ namespace BancoCaelum
             this.groupConta.Margin = new System.Windows.Forms.Padding(2);
             this.groupConta.Name = "groupConta";
             this.groupConta.Padding = new System.Windows.Forms.Padding(2);
-            this.groupConta.Size = new System.Drawing.Size(312, 193);
+            this.groupConta.Size = new System.Drawing.Size(366, 193);
             this.groupConta.TabIndex = 11;
             this.groupConta.TabStop = false;
             this.groupConta.Text = "Conta";
@@ -187,6 +191,9 @@ namespace BancoCaelum
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnBusca);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.textoBuscaTitular);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.comboContas);
             this.groupBox1.Controls.Add(this.label5);
@@ -194,16 +201,42 @@ namespace BancoCaelum
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(312, 102);
+            this.groupBox1.Size = new System.Drawing.Size(366, 102);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busca Conta";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // btnBusca
+            // 
+            this.btnBusca.Location = new System.Drawing.Point(250, 61);
+            this.btnBusca.Name = "btnBusca";
+            this.btnBusca.Size = new System.Drawing.Size(60, 20);
+            this.btnBusca.TabIndex = 20;
+            this.btnBusca.Text = "Buscar";
+            this.btnBusca.UseVisualStyleBackColor = true;
+            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 64);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Busca por titular";
+            // 
+            // textoBuscaTitular
+            // 
+            this.textoBuscaTitular.Location = new System.Drawing.Point(109, 61);
+            this.textoBuscaTitular.Name = "textoBuscaTitular";
+            this.textoBuscaTitular.Size = new System.Drawing.Size(135, 20);
+            this.textoBuscaTitular.TabIndex = 18;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(40, 49);
+            this.label6.Location = new System.Drawing.Point(11, 27);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 13);
@@ -213,7 +246,7 @@ namespace BancoCaelum
             // comboContas
             // 
             this.comboContas.FormattingEnabled = true;
-            this.comboContas.Location = new System.Drawing.Point(138, 46);
+            this.comboContas.Location = new System.Drawing.Point(107, 27);
             this.comboContas.Margin = new System.Windows.Forms.Padding(2);
             this.comboContas.Name = "comboContas";
             this.comboContas.Size = new System.Drawing.Size(135, 21);
@@ -242,13 +275,25 @@ namespace BancoCaelum
             this.botaoImpostos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botaoImpostos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botaoImpostos.ForeColor = System.Drawing.Color.White;
-            this.botaoImpostos.Location = new System.Drawing.Point(215, 359);
+            this.botaoImpostos.Location = new System.Drawing.Point(98, 359);
             this.botaoImpostos.Name = "botaoImpostos";
-            this.botaoImpostos.Size = new System.Drawing.Size(106, 23);
+            this.botaoImpostos.Size = new System.Drawing.Size(106, 25);
             this.botaoImpostos.TabIndex = 17;
             this.botaoImpostos.Text = "Calcular Impostos";
             this.botaoImpostos.UseVisualStyleBackColor = false;
             this.botaoImpostos.Click += new System.EventHandler(this.botaoImpostos_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(299, 358);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Relatorio";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -256,6 +301,7 @@ namespace BancoCaelum
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(386, 396);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.botaoImpostos);
             this.Controls.Add(this.botaoNovaConta);
             this.Controls.Add(this.groupBox1);
@@ -292,5 +338,9 @@ namespace BancoCaelum
         private System.Windows.Forms.Button botaoNovaConta;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button botaoImpostos;
+        private System.Windows.Forms.Button btnBusca;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textoBuscaTitular;
+        private System.Windows.Forms.Button button1;
     }
 }
